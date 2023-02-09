@@ -1,5 +1,6 @@
-<%@page import="member.MemberDTO"%>
-<%@page import="member.MemberDAO"%>
+
+<%@page import="com.itwillbs.member.db.MemberDTO"%>
+<%@page import="com.itwillbs.member.db.MemberDAO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
@@ -14,7 +15,7 @@
 </head>
 <body>
 <h1>member/deletePro.jsp</h1>
-<%
+<%-- <%
 //request 태그이름에 해당하는 값을 가져오기 => 변수에 저장(id, pass)
 String id=request.getParameter("id");
 String pass=request.getParameter("pass");
@@ -42,7 +43,7 @@ if(dto != null){
     </script>
     <%
 }
-%>
+%> --%>
 </body>
 </html>
 

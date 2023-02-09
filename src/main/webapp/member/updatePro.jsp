@@ -1,5 +1,6 @@
-<%@page import="member.MemberDTO"%>
-<%@page import="member.MemberDAO"%>
+
+<%@page import="com.itwillbs.member.db.MemberDAO"%>
+<%@page import="com.itwillbs.member.db.MemberDTO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -14,7 +15,7 @@
 </head>
 <body>
 <h1>member/updatePro.jsp</h1>
-<%
+<%-- <%
 //폼에서 입력한 내용이 서버에 전달 => request 내장객체 저장
 //request 한글처리
 request.setCharacterEncoding("utf-8");
@@ -50,7 +51,7 @@ if(dto!=null){
     </script>
     <%
 }
-%>
+%> --%>
 </body>
 </html>
 

@@ -47,15 +47,7 @@ public class MemberFrontController extends HttpServlet{
 		
 		if(sPath.equals("/MemberInsertForm.me")) {
 			System.out.println("가상주소 /InsertForm.me => 실제페이지 member/insertForm.jsp 이동");
-			// 실제페이지  member/insertForm.jsp 이동
-//			response.sendRedirect("member/insertForm.jsp");
-			
-			// 주소가 변경되지 않고 request, response 가지고 이동
-//			RequestDispatcher dispatcher=
-//					request.getRequestDispatcher("member/insertForm.jsp");
-//			dispatcher.forward(request, response);
-			
-			//이동정보를 저장하는 자바파일 객체생성
+
 			forward=new ActionForward();
 			forward.setPath("member/insertForm.jsp");
 			forward.setRedirect(false);
@@ -63,67 +55,93 @@ public class MemberFrontController extends HttpServlet{
 						
 		}else if(sPath.equals("/MemberInsertPro.me")) {
 			System.out.println("가상주소 /MemberInsertPro.me => 실제자바파일 연결");
-			// 실제페이지  (처리)자바 InsertPro.java<=>(디비)자바
-			// 패키지 com.itwillbs.member.action
-			// 파일이름 InsertPro.java
-			// execute(HttpServletRequest request, HttpServletResponse response) 메서드 정의
-			
-//			// InsertPro 객체생성 
-//			InsertPro insertPro=new InsertPro();
-//			// execute(request,response) 메서드 호출
-//			try {
-//				insertPro.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-			// 부모 = 자식 객체생성
 			action=new MemberInsertPro();
+			
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			//주소 변경되면서 이동
-//			response.sendRedirect("MemberLoginForm.me");
+
 			
 		}else if(sPath.equals("/MemberLoginForm.me")) {
-//			 member/loginForm.jsp 이동
-			// 주소가 변경되지 않고 request, response 가지고 이동
-//			RequestDispatcher dispatcher=
-//					request.getRequestDispatcher("member/loginForm.jsp");
-//			dispatcher.forward(request, response);
-			
-			//이동정보 저장
+
 			forward=new ActionForward();
 			forward.setPath("member/loginForm.jsp");
 			forward.setRedirect(false);
 			
-		}else if(sPath.equals("/MemberLoginPro.me")) {
-			// 자바객체 생성 -> 메서드 호출
-			// 패키지 com.itwillbs.member.action
-			// 파일이름 LoginPro.java
-			// execute2(HttpServletRequest request, HttpServletResponse response) 메서드 정의
 			
-//			LoginPro loginPro=new LoginPro();
-//			try {
-//				loginPro.execute2(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-			//주소를 변경하면서 이동
-//			response.sendRedirect("Main.me");
+		}else if(sPath.equals("/MemberLoginPro.me")) {
+			action = new MemberLoginPro();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
 			
 		}else if(sPath.equals("/MemberMain.me")) {
-			// member/main.jsp 주소변경 없이 이동
-//			RequestDispatcher dispatcher=
-//					request.getRequestDispatcher("member/main.jsp");
-//			dispatcher.forward(request, response);
 			
-			//이동정보 저장
 			forward=new ActionForward();
 			forward.setPath("member/main.jsp");
 			forward.setRedirect(false);
 			
+			
+		}else if(sPath.equals("/MemberLogout.me")) {
+			action = new MemberLogout();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}else if(sPath.equals("/MemberInfo.me")) {
+			action = new MemberInfo();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}else if(sPath.equals("/MemberUpdateForm.me")) {
+			action = new MemberUpdateForm();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}else if(sPath.equals("/MemberUpdatePro.me")) {
+			action = new MemberUpdatePro();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}else if(sPath.equals("/MemberDeleteForm.me")) {
+			forward=new ActionForward();
+			forward.setPath("member/deleteForm.jsp");
+			forward.setRedirect(false);
+			
+			
+		}else if(sPath.equals("/MemberDeletePro.me")) {
+			action = new MemberDeletePro();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		
@@ -134,14 +152,15 @@ public class MemberFrontController extends HttpServlet{
 		if(forward != null) {
 			//이동방식비교
 			if(forward.isRedirect()==true) {
+				// excute함수가 실행되며 forward에 저장된 다른 페이지 주소로 이동함
 				response.sendRedirect(forward.getPath());
 			}else {
+				// 주소가 유지되며 request 값과 가상주소를 들고감
 				RequestDispatcher dispatcher=
 				request.getRequestDispatcher(forward.getPath());
 		        dispatcher.forward(request, response);
 			}
 		}
-		
 		
 	}//doProcess()
 	
