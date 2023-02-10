@@ -142,6 +142,16 @@ public class MemberFrontController extends HttpServlet{
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
+			
+			
+		}else if(sPath.equals("/MemberList.me")) {
+			action = new MemberList();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

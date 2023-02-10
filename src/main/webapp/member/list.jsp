@@ -1,10 +1,5 @@
-<%@page import="member.MemberDTO"%>
+<%@page import="com.itwillbs.member.db.MemberDTO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="member.MemberDAO"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.DriverManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,10 +12,13 @@
 <h1>member/list.jsp</h1>
 <%
 // MemberDAO 객체생성
-MemberDAO dao=new MemberDAO();
+// MemberDAO dao=new MemberDAO();
 // 리턴할형 ArrayList<MemberDTO>  getMemberList() 메서드 정의 
 // ArrayList<MemberDTO>  memberList = dao.getMemberList() 메서드 호출
-ArrayList<MemberDTO> memberList =dao.getMemberList();
+// ArrayList<MemberDTO> memberList =dao.getMemberList();
+
+ArrayList<MemberDTO> memberList = (ArrayList<MemberDTO>)request.getAttribute("memberList");
+
 %>
 <table border="1">
 <tr><td>아이디</td><td>비밀번호</td><td>이름</td><td>가입날짜</td></tr>
@@ -38,6 +36,7 @@ for(int i=0;i<memberList.size();i++){
 }
 %>
 </table>
+<a href="MemberMain.me">메인으로</a><br>
 </body>
 </html>
 
