@@ -12,8 +12,8 @@
 <%
 boardDTO dto = (boardDTO)request.getAttribute("dto");
 %>
-<h1>글수정</h1>
-<form action="BoardUpdatePro.bo" method="post">
+<h1>파일글수정</h1>
+<form action="FileBoardUpdatePro.bo" method="post" enctype="multipart/form-data">
 <input type="hidden" name="num" value="<%=dto.getNum() %>">
 <table border="1">
 <tr><td>글쓴이</td>
@@ -22,6 +22,9 @@ boardDTO dto = (boardDTO)request.getAttribute("dto");
     <td><input type="text" name="subject" value="<%=dto.getSubject() %>"></td></tr>   
 <tr><td>글내용</td>
     <td><textarea name="content" rows="10" cols="20"><%=dto.getContent() %></textarea></td></tr>
+<tr><td>첨부파일</td>
+    <td><input type="file" name="file"><%=dto.getFile() %></td></tr>
+    <input type="hidden" name="oldfile" value="<%=dto.getFile() %>">
 <tr><td colspan="2"><input type="submit" value="글수정"></td></tr>    
 </table>
 </form>

@@ -75,10 +75,66 @@ public class BoardFrontController extends HttpServlet{
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
+		}else if(sPath.equals("/BoardContent.bo")) {
+			action = new BoardContent();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}else if(sPath.equals("/BoardUpdateForm.bo")) {
+			action = new BoardUpdateForm();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}else if(sPath.equals("/BoardUpdatePro.bo")) {
+			action = new BoardUpdatePro();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}else if(sPath.equals("/BoardDeletePro.bo")) {
+			action = new BoardDeletePro();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}else if(sPath.equals("/FileBoardUpdateForm.bo")) {
+			action = new FileBoardUpdateForm();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}else if(sPath.equals("/FileBoardUpdatePro.bo")) {
+			action = new FileBoardUpdatePro();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
-			
-			
-			
+	
 		if(forward != null) {
 			//이동방식비교
 			if(forward.isRedirect()==true) {

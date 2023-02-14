@@ -35,6 +35,7 @@ if(id!=null){
 %>
 <a href="BoardWriteForm.bo">글쓰기</a><br>
 <a href="BoardList.bo">글목록</a><br>
+<a href="FileBoardWriteForm.bo">첨부파일 글쓰기</a><br>
 </body>
 </html>
 

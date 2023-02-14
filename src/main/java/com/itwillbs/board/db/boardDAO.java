@@ -36,7 +36,7 @@ public class boardDAO {
 				num = rs.getInt(1)+1;
 			}
 			
-			sql="insert into board(num,name,subject,content,readcount,date) values(?,?,?,?,?,?)";
+			sql="insert into board(num,name,subject,content,readcount,date,file) values(?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			
 			pstmt.setInt(1, num);  
@@ -45,6 +45,7 @@ public class boardDAO {
 			pstmt.setString(4, dto.getContent());
 			pstmt.setInt(5, dto.getReadcount());
 			pstmt.setTimestamp(6, dto.getDate());
+			pstmt.setString(7, dto.getFile());
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -78,6 +79,7 @@ public class boardDAO {
 				dto.setSubject(rs.getString("subject"));
 				dto.setReadcount(rs.getInt("readcount"));
 				dto.setDate(rs.getTimestamp("date"));
+				dto.setFile(rs.getString("file"));
 				dtolist.add(dto);
 		}
 		} catch (Exception e) {
@@ -112,6 +114,8 @@ public class boardDAO {
 				dto.setContent(rs.getString("content"));
 				dto.setReadcount(rs.getInt("readcount"));
 				dto.setDate(rs.getTimestamp("date"));
+				dto.setFile(rs.getString("file"));
+				
 		}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -144,6 +148,30 @@ public class boardDAO {
 			if(con!=null) try { con.close();} catch (Exception e2) {}
 		}
 	}
+	
+	public void fupdateBoard(boardDTO dto) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {	
+			con = getConnection();
+			
+			String sql="update board set subject=?, content=?, file=? where num=?";
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getSubject());  
+			pstmt.setString(2, dto.getContent());  
+			pstmt.setString(3, dto.getFile());  
+			pstmt.setInt(4, dto.getNum());
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+	}
+	
 	
 	public void deleteBoard(int num) {
 		Connection con = null;

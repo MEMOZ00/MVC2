@@ -46,7 +46,7 @@ for(int i = 0; i < dtolist.size(); i++) {
 <tr>
 <td><%=dto.getNum() %></td>
 <td><%=dto.getName() %></td>
-<td><a href="content.jsp?num=<%=dto.getNum()%>"><%=dto.getSubject() %></a></td>
+<td><a href="BoardContent.bo?num=<%=dto.getNum()%>"><%=dto.getSubject() %></a></td>
 <td><%=dto.getReadcount() %></td>
 <td><%=dto.getDate() %></td>
 </tr>	
